@@ -5,7 +5,6 @@
 * @since: 创建时间  2019-11-20 17:29:48
 */
 
-<!-- Home -->
 <template>
   <div class='index_main'>
     <div class="index_header">
