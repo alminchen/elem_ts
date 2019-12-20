@@ -8,6 +8,7 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
+    <span @click="changeAlert">{{isAlert}}</span>
   </div>
 </template>
 
@@ -19,7 +20,16 @@ import { Component, Vue, Watch, Prop, Emit } from "vue-property-decorator";
 import { Action, Mutation, State, Getter } from "vuex-class";
 
 @Component({ components: {} })
-export default class About extends Vue {}
+export default class About extends Vue {
+  private isAlert: boolean = false;
+  @Watch("isAlert")
+  onChildChange(bool: boolean) {
+    console.log(bool);
+  }
+  private changeAlert(): void {
+    this.isAlert = !this.isAlert;
+  }
+}
 </script>
 <style lang='scss' scoped>
 //@import url(); 引入公共css类
