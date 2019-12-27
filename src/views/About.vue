@@ -33,4 +33,7 @@ export default class About extends Vue {
 </script>
 <style lang='scss' scoped>
 //@import url(); 引入公共css类
+.about {
+  color: $colrRed;
+}
 </style>
