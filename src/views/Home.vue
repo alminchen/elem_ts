@@ -171,9 +171,12 @@ export default class Home extends Vue {
   @Action private setLogin!: (plate: boolean) => boolean;
   @Watch("search_word")
   onChildChanged(val: string) {}
+  private get colo() {
+    return "1111";
+  }
   private mounted(): any {
     this.setLogin(true);
-
+    // console.log(this.colo);
     this.setWhichpage("homepage");
     setTimeout(() => {
       window.addEventListener("scroll", this.dispatchLoad, false);

@@ -59,7 +59,7 @@
 <script lang='ts'>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import { Component, Vue, Watch, Prop, Emit } from "vue-property-decorator";
+import { Component, Vue, Watch, Prop, Emit, Ref } from "vue-property-decorator";
 import { Action, Mutation, State, Getter } from "vuex-class";
 
 import ShoppingCar from "../components/ShoppingCar.vue";
@@ -82,6 +82,10 @@ export default class BusinessContent extends Vue {
   private shoppingCarShow: boolean = false;
   private sendConst: number = 0;
   private alertMaskShow: boolean = false;
+  @Ref("leftLi") leftLi!: HTMLFormElement;
+  @Ref("ullist") ullist!: HTMLFormElement;
+  @Ref("typeTitle") typeTitle!: HTMLFormElement;
+  @Ref("ball") ball!: HTMLFormElement;
   @Action private setAllNums!: (num: number) => number;
   @Action private setAllTotalPrice!: (nums: number) => number;
   @Action private setOrder!: (plate: any) => any;
@@ -94,14 +98,19 @@ export default class BusinessContent extends Vue {
   @Watch("contentShow")
   onChiledChange(val: boolean) {}
   @Watch("commodity")
-  onChildChange(val: any) {
+  onValueChange(val: any) {
+    console.log(val);
     this.sendConst = val.send_cost;
     this.$nextTick(() => {
       this.init();
     });
   }
   private mounted() {
-    this.$nextTick(() => {});
+    console.log(this.commodity);
+    this.$nextTick(() => {
+      this.sendConst = this.commodity.send_cost;
+      this.init();
+    });
   }
   private goPayStatus(): void {
     if (this.allNub > 0) {
@@ -158,9 +167,9 @@ export default class BusinessContent extends Vue {
     this.rightControlLeftClass();
   }
   private rightControlLeftClass(): any {
-    let leftLi: any = this.$refs.leftLi;
-    let rightUl: any = this.$refs.ullist;
-    let ti: any = this.$refs.typeTitle;
+    let leftLi: any = this.leftLi;
+    let rightUl: any = this.ullist;
+    let ti: any = this.typeTitle;
     let asIndex: any = 0;
     rightUl.addEventListener(
       "scroll",
@@ -180,8 +189,8 @@ export default class BusinessContent extends Vue {
     );
   }
   private leftControlRightScroll(index: number): any {
-    let rightUl_: any = this.$refs.ullist;
-    let rightTo_: any = this.$refs.typeTitle;
+    let rightUl_: any = this.ullist;
+    let rightTo_: any = this.typeTitle;
     let top_: number = rightTo_[index].offsetTop;
     this.scrollMove(rightUl_, top_);
   }
@@ -207,7 +216,7 @@ export default class BusinessContent extends Vue {
       x.one_food_id,
       x.unit_price
     );
-    let ball: any = this.$refs.ball;
+    let ball: any = this.ball;
     ball.ball_fly(e);
   }
   private add_shopping_car(

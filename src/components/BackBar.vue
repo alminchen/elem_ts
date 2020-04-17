@@ -30,6 +30,7 @@ export default class BackBar extends Vue {
     let _this: any = this;
     _this.$router.go(-1);
   }
+  //   computed:
 }
 </script>
 <style lang='scss' scoped>

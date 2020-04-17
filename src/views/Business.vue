@@ -64,7 +64,9 @@ export default class Business extends Vue {
     window.innerHeight - (window.innerWidth / 10) * 4.2;
   private changeShowType: string = "food";
   @Getter getFalseBussinessInfo: any;
-  private mounted() {}
+  private mounted() {
+    console.log(this.commodity);
+  }
   get commodity(): any {
     let _this: any = this;
     return this.getFalseBussinessInfo[_this.$route.params.id];
