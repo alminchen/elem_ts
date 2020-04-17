@@ -37,8 +37,7 @@
 <script lang='ts'>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import { Component, Vue, Watch, Prop, Emit } from "vue-property-decorator";
-import { Action, Mutation, State, Getter } from "vuex-class";
+import { Component, Vue, Prop, Emit } from "vue-property-decorator";
 
 @Component({ components: {} })
 export default class ShoppingCarList extends Vue {
@@ -54,7 +53,7 @@ export default class ShoppingCarList extends Vue {
     name: string,
     one_food_id: number,
     unit_price: number
-  ): any {}
+  ): void {}
   private clearShop(): void {
     this.clearShopping();
   }

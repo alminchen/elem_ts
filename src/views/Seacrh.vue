@@ -20,8 +20,8 @@
 <script lang='ts'>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import { Component, Vue, Watch, Prop, Emit } from "vue-property-decorator";
-import { Action, Mutation, State, Getter } from "vuex-class";
+import { Component, Vue, Watch } from "vue-property-decorator";
+import { Getter } from "vuex-class";
 import OneBusiness from "../components/OneBusiness.vue";
 @Component({ components: { OneBusiness } })
 export default class Seacrh extends Vue {

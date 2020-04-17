@@ -59,8 +59,8 @@
 <script lang='ts'>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import { Component, Vue, Watch, Prop, Emit, Ref } from "vue-property-decorator";
-import { Action, Mutation, State, Getter } from "vuex-class";
+import { Component, Vue, Watch, Prop, Ref } from "vue-property-decorator";
+import { Action } from "vuex-class";
 
 import ShoppingCar from "../components/ShoppingCar.vue";
 import ShoppingCarListTpl from "../components/ShoppingCarList.vue";
@@ -73,6 +73,7 @@ import BusinessPay from "../components/BusinessPay.vue";
   }
 })
 export default class BusinessContent extends Vue {
+  private indexss: number = 0;
   private shoppingCarList: any = {};
   private reNub: any = {};
   private allNub: number = 0;
@@ -95,11 +96,8 @@ export default class BusinessContent extends Vue {
   commodity!: any;
   @Prop()
   contentShow!: boolean;
-  @Watch("contentShow")
-  onChiledChange(val: boolean) {}
   @Watch("commodity")
   onValueChange(val: any) {
-    console.log(val);
     this.sendConst = val.send_cost;
     this.$nextTick(() => {
       this.init();
@@ -139,7 +137,7 @@ export default class BusinessContent extends Vue {
     let h: number = d.getHours() < 10 ? `0${d.getHours()}` : d.getHours();
     let m: number = d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes();
     let s: number = d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds();
-    let orderTime: string = `${Y}-${M}-${D} ${h}:${m}`;
+    let orderTime: string = `${Y}-${M}-${D} ${h}:${m}:${s}`;
     let headeerWord = (): any => {
       for (let i in this.shoppingCarList) {
         return this.shoppingCarList[i].name;
@@ -180,7 +178,7 @@ export default class BusinessContent extends Vue {
             asIndex = i;
           }
         }
-        leftLi.forEach((item: any, index: number) => {
+        leftLi.forEach((item: any) => {
           item.classList.remove("active_ia");
         });
         leftLi[asIndex].classList.add("active_ia");
@@ -189,6 +187,7 @@ export default class BusinessContent extends Vue {
     );
   }
   private leftControlRightScroll(index: number): any {
+    this.indexss = index;
     let rightUl_: any = this.ullist;
     let rightTo_: any = this.typeTitle;
     let top_: number = rightTo_[index].offsetTop;
@@ -279,9 +278,10 @@ export default class BusinessContent extends Vue {
     this.setAllTotalPrice(allPrice);
   }
   private ball_fly(e: any) {
-    let bound: any = e.target.getBoundingClientRect();
-    let boundTop: number = bound.top;
-    let boundLeft: number = bound.left;
+    e.target.getBoundingClientRect();
+    // let bound: any = ;
+    // let boundTop: number = bound.top;
+    // let boundLeft: number = bound.left;
   }
 }
 </script>

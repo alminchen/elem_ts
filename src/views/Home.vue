@@ -142,8 +142,8 @@
 <script lang='ts'>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import { Component, Vue, Watch } from "vue-property-decorator";
-import { Action, Mutation, State, Getter } from "vuex-class";
+import { Component, Vue } from "vue-property-decorator";
+import { Action, Getter } from "vuex-class";
 import { Swipe, SwipeItem } from "vue-swipe";
 import OneBusiness from "../components/OneBusiness.vue";
 import FixNav from "../components/FixNav.vue";
@@ -169,8 +169,6 @@ export default class Home extends Vue {
   @Action private setHomepageMore!: (plateform: any) => any;
   @Action private setWhichpage!: (plate: string) => string;
   @Action private setLogin!: (plate: boolean) => boolean;
-  @Watch("search_word")
-  onChildChanged(val: string) {}
   private get colo() {
     return "1111";
   }
