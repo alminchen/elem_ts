@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <FixNav></FixNav>
+    <fix-nav></fix-nav>
   </div>
 </template>
 

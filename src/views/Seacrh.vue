@@ -13,7 +13,7 @@
       </svg>
       <input type="search" v-model="search_text" class="v-md" placeholder="请输入商品名称">
     </div>
-    <OneBusiness v-for="(item,index) in search_res" :key="index" :item="item"></OneBusiness>
+    <one-business v-for="(item,index) in search_res" :key="index" :item="item"></one-business>
   </div>
 </template>
 

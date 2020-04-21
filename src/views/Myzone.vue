@@ -70,7 +70,7 @@
       </svg>
       <span class="v-md">下载饿了么APP</span>
     </div>
-    <FixNav></FixNav>
+    <fix-nav></fix-nav>
   </div>
 </template>
 

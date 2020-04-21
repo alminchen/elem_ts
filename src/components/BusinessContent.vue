@@ -49,9 +49,9 @@
         </li>
       </ul>
     </div>
-    <ShoppingCar :changeShowType="contentShow" :sendCost="sendConst" ref="ball" @showList="shoppingCarShowIn" @goPay="goPayStatus"></ShoppingCar>
-    <ShoppingCarListTpl :shoppingCarShow="shoppingCarShow" @clearShopping="cleanShopCar" :shoppingCarList="shoppingCarList" @reduceCarFood="reduce_food" @addCarFood="add_shopping_car"></ShoppingCarListTpl>
-    <BusinessPay :allTotalPrice="allTotalPrice" :alertMaskShow="alertMaskShow" @cancel="cancelInPay" @payInBuy="payToSuccess"></BusinessPay>
+    <shopping-car :change-show-type="contentShow" :sent-const="sendConst" ref="ball" @showList="shoppingCarShowIn" @goPay="goPayStatus"></shopping-car>
+    <shopping-car-list-tpl :shopping-car-show="shoppingCarShow" @clearShopping="cleanShopCar" :shopping-car-list="shoppingCarList" @reduceCarFood="reduce_food" @addCarFood="add_shopping_car"></shopping-car-list-tpl>
+    <business-pay :all-total-price="allTotalPrice" :alert-mask-show="alertMaskShow" @cancel="cancelInPay" @payInBuy="payToSuccess"></business-pay>
     <div class="mask" v-if="shoppingCarShow || alertMaskShow" @click="shoppingCarShow = false;alertMaskShow = false"></div>
   </section>
 </template>

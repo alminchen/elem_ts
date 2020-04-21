@@ -37,8 +37,8 @@
         <span :class="{ activity_show: changeShowType == 'rating' }" @click="changeShowType = 'rating'">评价</span>
       </div>
     </div>
-    <BusinessContent :height="computedContentHeight" v-show="changeShowType == 'food'" :commodity="commodity" :contentShow="changeShowType"></BusinessContent>
-    <BusinessRating :height="computedContentHeight" :commodity="commodity" v-show="changeShowType == 'rating'"></BusinessRating>
+    <business-content :height="computedContentHeight" v-show="changeShowType == 'food'" :commodity="commodity" :content-show="changeShowType"></business-content>
+    <business-rating :height="computedContentHeight" :commodity="commodity" v-show="changeShowType == 'rating'"></business-rating>
   </div>
 </template>
 

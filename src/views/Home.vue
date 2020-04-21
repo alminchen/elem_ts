@@ -133,9 +133,9 @@
       </Swipe>
     </div>
     <h3 class="index_title">推荐商家</h3>
-    <OneBusiness v-for="(i ,index) in getFalseBussinessbrief" :key="index" :item="i" ref="father"></OneBusiness>
+    <one-business v-for="(i ,index) in getFalseBussinessbrief" :key="index" :item="i" ref="father"></one-business>
     <div class="space"></div>
-    <FixNav></FixNav>
+    <fix-nav></fix-nav>
   </div>
 </template>
 
