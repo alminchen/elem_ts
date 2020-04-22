@@ -12,9 +12,9 @@
     </div>
     <div class="car_words">
       <h4>￥{{ allTotalPrice }}</h4>
-      <p>配送费:￥{{ sendCost }}</p>
+      <p>配送费:￥{{ sendConst }}</p>
     </div>
-    <a href="javascript:;" :class="['cartview', { cantpay: allTotalPrice < sendCost }]" @click.stop="goToPay">去结算</a>
+    <a href="javascript:;" :class="['cartview', { cantpay: allTotalPrice < sendConst }]" @click.stop="goToPay">去结算</a>
   </div>
 </template>
 
@@ -33,10 +33,12 @@ export default class ShoppingCar extends Vue {
   @Prop()
   changeShowType!: string;
   @Prop()
-  sendCost!: number;
+  sendConst!: number;
   @Emit("showList") private showList(): any {}
   @Emit("goPay") private goPay(): any {}
-
+  private mounted() {
+    console.log(this.sendConst);
+  }
   private showCarList(): any {
     if (this.allNums > 0) {
       this.showList();

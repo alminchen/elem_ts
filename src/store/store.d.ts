@@ -1,4 +1,5 @@
-declare namespace StoreStats {
+// declare namespaced StoreStats{
+declare module StoreStats {
     export interface falseHotWord {
         search_word?: string,
         title?: string
