@@ -82,6 +82,8 @@ export default class BusinessContent extends Vue {
   private alertBoxShow: boolean = false;
   private shoppingCarShow: boolean = false;
   private sendConst: number = 0;
+  private righgtControl: any = null;
+  private leftScrollTimer: any = null;
   private alertMaskShow: boolean = false;
   @Ref("leftLi") leftLi!: HTMLFormElement;
   @Ref("ullist") ullist!: HTMLFormElement;
@@ -102,6 +104,17 @@ export default class BusinessContent extends Vue {
     this.$nextTick(() => {
       this.init();
     });
+  }
+  private beforeDestroy() {
+    clearInterval(this.leftScrollTimer);
+    this.leftScrollTimer = null;
+    this.ullist.removeEventListener(
+      "scroll",
+      () => {
+        console.log("remove");
+      },
+      false
+    );
   }
   private mounted() {
     console.log(this.commodity);
@@ -169,7 +182,7 @@ export default class BusinessContent extends Vue {
     let rightUl: any = this.ullist;
     let ti: any = this.typeTitle;
     let asIndex: any = 0;
-    rightUl.addEventListener(
+    this.righgtControl = rightUl.addEventListener(
       "scroll",
       (e: any) => {
         let thisST: number = e.target.scrollTop;
@@ -195,7 +208,7 @@ export default class BusinessContent extends Vue {
   }
   private scrollMove(ele: any, target: any): any {
     let vector = Math.round(target - ele.scrollTop) / 10;
-    let scrollTimer = setInterval(() => {
+    this.leftScrollTimer = setInterval(() => {
       ele.scrollTop += vector;
       if (
         (ele.scrollTop >= target && vector > 0) ||
@@ -203,7 +216,8 @@ export default class BusinessContent extends Vue {
         ele.scrollTop + ele.clientHeight + 1 >= ele.scrollHeight
       ) {
         ele.scrollTop = target + 1;
-        clearInterval(scrollTimer);
+        clearInterval(this.leftScrollTimer);
+        this.leftScrollTimer = null;
       }
     }, 1000 / 10);
   }
