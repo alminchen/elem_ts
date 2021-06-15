@@ -45,22 +45,22 @@ export default class ShoppingCarList extends Vue {
   shoppingCarShow!: boolean;
   @Prop()
   shoppingCarList!: () => object;
-  @Emit("clearShopping") private clearShopping(): any {}
-  @Emit("reduceCarFood") private reduceCarFood(foodid: number): any {}
-  @Emit("addCarFood") private addCarFood(
+  @Emit("clearShopping") private clearShopping (): any { }
+  @Emit("reduceCarFood") private reduceCarFood (foodid: number): any { }
+  @Emit("addCarFood") private addCarFood (
     type_accumulation: string,
     type_name: string,
     name: string,
     one_food_id: number,
     unit_price: number
-  ): void {}
-  private clearShop(): void {
+  ): void { }
+  private clearShop (): void {
     this.clearShopping();
   }
-  private reduceFood(foodid: number): void {
+  private reduceFood (foodid: number): void {
     this.reduceCarFood(foodid);
   }
-  private addFood(
+  private addFood (
     type_accumulation: string,
     type_name: string,
     name: string,

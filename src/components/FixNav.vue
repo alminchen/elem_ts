@@ -54,7 +54,7 @@ import { Getter } from "vuex-class";
 @Component({ components: {} })
 export default class FixNav extends Vue {
   @Getter private getwhichpage!: string;
-  get returnPageNow() {
+  get returnPageNow () {
     return this.getwhichpage;
   }
 }

@@ -29,10 +29,10 @@ export default class Seacrh extends Vue {
   private search_text: string = "";
   private search_res: any = [];
   @Watch("search_text")
-  onChildChange(val: string) {
+  onChildChange (val: string) {
     this.search_method(val);
   }
-  private mounted() {
+  private mounted () {
     let _this: any = this;
     this.search_text = _this.$route.params.keyword;
     for (let x in this.getFalseBussinessbrief) {
@@ -41,7 +41,7 @@ export default class Seacrh extends Vue {
       }
     }
   }
-  private search_method(val: string): void {
+  private search_method (val: string): void {
     this.search_res = [];
     for (let x in this.getFalseBussinessbrief) {
       if (this.getFalseBussinessbrief[x].shop_name.includes(val)) {
@@ -61,7 +61,7 @@ export default class Seacrh extends Vue {
     width: 0.6rem;
     height: 0.6rem;
   }
-  input[type="search"] {
+  input[type='search'] {
     display: inline-block;
     height: 0.9rem;
     width: 8rem;

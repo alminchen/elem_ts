@@ -24,7 +24,7 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 export default class BackBar extends Vue {
   @Prop()
   title!: string;
-  private back_once(): void {
+  private back_once (): void {
     let _this: any = this;
     _this.$router.go(-1);
   }

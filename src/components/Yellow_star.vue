@@ -29,7 +29,7 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 export default class Yellow_star extends Vue {
   @Prop()
   code!: number;
-  private mounted() {
+  private mounted () {
     // console.log(this.code);
   }
 }

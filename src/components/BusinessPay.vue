@@ -27,10 +27,10 @@ export default class BusinessPay extends Vue {
   allTotalPrice!: number;
   @Prop()
   alertMaskShow!: boolean;
-  private paySuccess(): void {
+  private paySuccess (): void {
     this.$emit("payInBuy");
   }
-  private cancelPay(): void {
+  private cancelPay (): void {
     this.$emit("cancel");
   }
 }

@@ -22,10 +22,10 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 export default class About extends Vue {
   private isAlert: boolean = false;
   @Watch("isAlert")
-  onChildChange(bool: boolean) {
+  onChildChange (bool: boolean) {
     console.log(bool);
   }
-  private changeAlert(): void {
+  private changeAlert (): void {
     this.isAlert = !this.isAlert;
   }
 }

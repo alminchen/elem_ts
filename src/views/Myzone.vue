@@ -89,7 +89,7 @@ import BackBar from "../components/BackBar.vue";
 })
 export default class Myzone extends Vue {
   @Action private setWhichpage!: (plate: string) => any;
-  private mounted() {
+  private mounted () {
     this.setWhichpage("myzone");
   }
 }
