@@ -4,7 +4,7 @@ import Action from "./actions"
 import Getters from "./getters"
 import Mutations from "./mutations"
 import { State } from "./interfac"
-import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } from '@/falsedata/falsedata.ts';
+import { falseHotWord, falseOrder, falseBussinessbrief, falseBussinessInfo } from '@/falsedata/falsedata';
 
 Vue.use(Vuex)
 

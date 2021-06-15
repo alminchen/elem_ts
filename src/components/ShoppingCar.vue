@@ -27,27 +27,24 @@ import { State } from "vuex-class";
 @Component({ components: {} })
 export default class ShoppingCar extends Vue {
   @State private allNums!: number;
-  @State private allTotalPrice!: number;
-  private shoppingCarShow: boolean = false;
-  private allNub: number = 0;
   @Prop()
   changeShowType!: string;
   @Prop()
   sendConst!: number;
-  @Emit("showList") private showList(): any {}
-  @Emit("goPay") private goPay(): any {}
-  private mounted() {
+  @Emit("showList") private showList (): any { }
+  @Emit("goPay") private goPay (): any { }
+  private mounted () {
     console.log(this.sendConst);
   }
-  private showCarList(): any {
+  private showCarList (): any {
     if (this.allNums > 0) {
       this.showList();
     }
   }
-  private goToPay(): void {
+  private goToPay (): void {
     this.goPay();
   }
-  private ball_fly(e: any): any {
+  private ball_fly (e: any): any {
     let bound: any = e.target.getBoundingClientRect();
     let boundTop: number = bound.top;
     let boundLeft: number = bound.left;
@@ -171,8 +168,7 @@ export default class ShoppingCar extends Vue {
   -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.3, -0.2, 1, 0);
   transition: -webkit-transform 0.5s cubic-bezier(0.3, -0.2, 1, 0);
   transition: transform 0.5s cubic-bezier(0.3, -0.2, 1, 0);
-  transition: transform 0.5s cubic-bezier(0.3, -0.2, 1, 0),
-    -webkit-transform 0.5s cubic-bezier(0.3, -0.2, 1, 0);
+  transition: transform 0.5s cubic-bezier(0.3, -0.2, 1, 0), -webkit-transform 0.5s cubic-bezier(0.3, -0.2, 1, 0);
 }
 
 .father {

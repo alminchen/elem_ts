@@ -37,7 +37,7 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 import { Component, Vue } from "vue-property-decorator";
-import { Action, Getter } from "vuex-class";
+import { Action } from "vuex-class";
 import BackBar from "../components/BackBar.vue";
 import FixNav from "../components/FixNav.vue";
 @Component({
@@ -47,9 +47,8 @@ import FixNav from "../components/FixNav.vue";
   }
 })
 export default class Order extends Vue {
-  @Getter private getFalseOrder!: any;
   @Action private setWhichpage!: (plate: string) => any;
-  private mounted() {
+  private mounted () {
     this.setWhichpage("order");
   }
 }

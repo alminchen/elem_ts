@@ -73,16 +73,13 @@ import BusinessPay from "../components/BusinessPay.vue";
   }
 })
 export default class BusinessContent extends Vue {
-  private indexss: number = 0;
   private shoppingCarList: any = {};
   private reNub: any = {};
   private allNub: number = 0;
   private totalPrice: number = 0;
   private allTotalPrice: number = 0;
-  private alertBoxShow: boolean = false;
   private shoppingCarShow: boolean = false;
   private sendConst: number = 0;
-  private righgtControl: any = null;
   private leftScrollTimer: any = null;
   private alertMaskShow: boolean = false;
   @Ref("leftLi") leftLi!: HTMLFormElement;
@@ -99,13 +96,13 @@ export default class BusinessContent extends Vue {
   @Prop()
   contentShow!: boolean;
   @Watch("commodity")
-  onValueChange(val: any) {
+  onValueChange (val: any) {
     this.sendConst = val.send_cost;
     this.$nextTick(() => {
       this.init();
     });
   }
-  private beforeDestroy() {
+  private beforeDestroy () {
     clearInterval(this.leftScrollTimer);
     this.leftScrollTimer = null;
     this.ullist.removeEventListener(
@@ -116,32 +113,32 @@ export default class BusinessContent extends Vue {
       false
     );
   }
-  private mounted() {
+  private mounted () {
     console.log(this.commodity);
     this.$nextTick(() => {
       this.sendConst = this.commodity.send_cost;
       this.init();
     });
   }
-  private goPayStatus(): void {
+  private goPayStatus (): void {
     if (this.allNub > 0) {
       this.alertMaskShow = !this.alertMaskShow;
     }
   }
-  private cancelInPay(): void {
+  private cancelInPay (): void {
     this.alertMaskShow = false;
   }
-  private shoppingCarShowIn(): void {
+  private shoppingCarShowIn (): void {
     if (this.allNub > 0) {
       this.shoppingCarShow = !this.shoppingCarShow;
     }
   }
-  private cleanShopCar(): void {
+  private cleanShopCar (): void {
     this.shoppingCarList = {};
     this.spChangeComputeAll();
     this.shoppingCarShow = false;
   }
-  private payToSuccess(): void {
+  private payToSuccess (): void {
     let d: any = new Date();
     let Y: number = d.getFullYear();
     let M: number =
@@ -174,39 +171,22 @@ export default class BusinessContent extends Vue {
     let router: any = this;
     router.$router.push("/order");
   }
-  private init(): any {
+  private init (): any {
     this.rightControlLeftClass();
   }
-  private rightControlLeftClass(): any {
-    let leftLi: any = this.leftLi;
-    let rightUl: any = this.ullist;
-    let ti: any = this.typeTitle;
-    let asIndex: any = 0;
-    this.righgtControl = rightUl.addEventListener(
-      "scroll",
-      (e: any) => {
-        let thisST: number = e.target.scrollTop;
-        for (let i in ti) {
-          if (thisST >= ti[i].offsetTop) {
-            asIndex = i;
-          }
-        }
-        leftLi.forEach((item: any) => {
-          item.classList.remove("active_ia");
-        });
-        leftLi[asIndex].classList.add("active_ia");
-      },
-      false
-    );
+  private rightControlLeftClass (): any {
+    // let leftLi: any = this.leftLi;
+    // let rightUl: any = this.ullist;
+    // let ti: any = this.typeTitle;
+    // let asIndex: any = 0;
   }
-  private leftControlRightScroll(index: number): any {
-    this.indexss = index;
+  private leftControlRightScroll (index: number): any {
     let rightUl_: any = this.ullist;
     let rightTo_: any = this.typeTitle;
     let top_: number = rightTo_[index].offsetTop;
     this.scrollMove(rightUl_, top_);
   }
-  private scrollMove(ele: any, target: any): any {
+  private scrollMove (ele: any, target: any): any {
     let vector = Math.round(target - ele.scrollTop) / 10;
     this.leftScrollTimer = setInterval(() => {
       ele.scrollTop += vector;
@@ -221,7 +201,7 @@ export default class BusinessContent extends Vue {
       }
     }, 1000 / 10);
   }
-  private add_food(n: any, x: any, e: any) {
+  private add_food (n: any, x: any, e: any) {
     this.add_shopping_car(
       n.type_accumulation,
       n.name,
@@ -232,7 +212,7 @@ export default class BusinessContent extends Vue {
     let ball: any = this.ball;
     ball.ball_fly(e);
   }
-  private add_shopping_car(
+  private add_shopping_car (
     type: string,
     typename: string,
     foodname: string,
@@ -253,7 +233,7 @@ export default class BusinessContent extends Vue {
     }
     this.spChangeComputeAll();
   }
-  private reduce_food(fooid: number): any {
+  private reduce_food (fooid: number): any {
     if (this.shoppingCarList && this.shoppingCarList[fooid].count > 0) {
       this.shoppingCarList[fooid].count--;
       this.shoppingCarList[fooid].count <= 0 &&
@@ -263,7 +243,7 @@ export default class BusinessContent extends Vue {
     if (Object.keys(this.shoppingCarList).length == 0)
       this.shoppingCarShow = false;
   }
-  private spChangeComputeAll(): any {
+  private spChangeComputeAll (): any {
     this.reNub = {};
     for (let u in this.shoppingCarList) {
       if (!this.reNub[this.shoppingCarList[u].type_accumulation]) {
@@ -291,7 +271,7 @@ export default class BusinessContent extends Vue {
     this.allTotalPrice = this.totalPrice + this.sendConst;
     this.setAllTotalPrice(allPrice);
   }
-  private ball_fly(e: any) {
+  private ball_fly (e: any) {
     e.target.getBoundingClientRect();
     // let bound: any = ;
     // let boundTop: number = bound.top;
@@ -334,7 +314,7 @@ export default class BusinessContent extends Vue {
       li.active_ia {
         background: #fff;
         &:after {
-          content: "";
+          content: '';
           position: absolute;
           left: 0;
           top: 0;

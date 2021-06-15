@@ -62,9 +62,8 @@ export default class OneBusiness extends Vue {
     required: true
   })
   item!: () => {};
-  private tss: string = "111111";
-  private mounted() {}
-  private goShopDetail(path: string): void {
+  private mounted () { }
+  private goShopDetail (path: string): void {
     let _this: any = this;
     _this.$router.push(`/business${path}`);
   }

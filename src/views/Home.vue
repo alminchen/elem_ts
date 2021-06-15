@@ -156,23 +156,13 @@ import FixNav from "../components/FixNav.vue";
   }
 })
 export default class Home extends Vue {
-  private showMe: boolean = false;
-  private ss: string = "";
-  private search_word: string = "";
-  private hot_words: string = "";
-  private sexteen_slider: string = "";
   private isLoadingMore: boolean = false;
-  @Getter private getLogin!: boolean;
-  @Getter private getFalseHotWord: any;
   @Getter private getFalseBussinessbrief: any;
   @Action private setLoading!: (plateform: boolean) => boolean;
   @Action private setHomepageMore!: (plateform: any) => any;
   @Action private setWhichpage!: (plate: string) => string;
   @Action private setLogin!: (plate: boolean) => boolean;
-  private get colo() {
-    return "1111";
-  }
-  private mounted(): any {
+  private mounted (): any {
     this.setLogin(true);
     // console.log(this.colo);
     this.setWhichpage("homepage");
@@ -180,10 +170,10 @@ export default class Home extends Vue {
       window.addEventListener("scroll", this.dispatchLoad, false);
     }, 0);
   }
-  private beforeDestroy() {
+  private beforeDestroy () {
     window.removeEventListener("scroll", this.dispatchLoad, false);
   }
-  private loadMore(): any {
+  private loadMore (): any {
     if (this.getFalseBussinessbrief.length > 15) return;
     this.setLoading(true);
     if (this.isLoadingMore) return;
@@ -198,7 +188,7 @@ export default class Home extends Vue {
       this.isLoadingMore = false;
     }, 1000);
   }
-  private dispatchLoad(): void {
+  private dispatchLoad (): void {
     let dscrollTop =
       document.body.scrollTop || document.documentElement.scrollTop;
     let offsetHei = document.documentElement.offsetHeight;
@@ -259,7 +249,7 @@ export default class Home extends Vue {
       width: 9rem;
       margin: 0 auto;
       height: 0.9rem;
-      input[type="text"] {
+      input[type='text'] {
         width: 100%;
         height: 0.9rem;
         outline: none;
